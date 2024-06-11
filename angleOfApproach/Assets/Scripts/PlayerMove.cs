@@ -90,9 +90,4 @@ public class PlayerMove : MonoBehaviour
     {
         _controller.Move(_direction * _speed * Time.deltaTime);
     }
-
-    void TriggerAnims()
-    {
-
-    }
 }
