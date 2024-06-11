@@ -18,10 +18,15 @@ public class PlayerMove : MonoBehaviour
     private float _currentVelocity;
 
     private float _speed;
-    [SerializeField] private float _walkSpeed = 2.0f;
+    [SerializeField] private float _dashSpeed = 2.0f;
     [SerializeField] private float _sprintSpeed = 5.0f;
     [Range(0.0f, 1.0f)]
     [SerializeField] private float _turnSmoothing;
+
+    private Queue<Vector3> historicalVelocities;
+    private float lastPositionTime;
+    private int maxQueueSize;
+
 
 
     void Awake()

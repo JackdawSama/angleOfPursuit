@@ -645,7 +645,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &291366220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -659,9 +659,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPlayer: {fileID: 446163010}
-  endLine: 0
-  defenderSpeedMin: 0
-  defenderSpeedMax: 0
+  endLine: 46
+  defenderSpeedMin: 12
+  defenderSpeedMax: 17
+  useMovementPrediction: 0
+  MovementPredictionThreshold: 0
+  MovementPredictionTimed: 0
 --- !u!195 &291366221
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -792,7 +795,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &294369181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -806,9 +809,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPlayer: {fileID: 446163010}
-  endLine: 0
-  defenderSpeedMin: 0
-  defenderSpeedMax: 0
+  endLine: 46
+  defenderSpeedMin: 12
+  defenderSpeedMax: 17
+  useMovementPrediction: 0
+  MovementPredictionThreshold: 0
+  MovementPredictionTimed: 0
 --- !u!195 &294369182
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1894,7 +1900,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &626759120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1908,9 +1914,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPlayer: {fileID: 446163010}
-  endLine: 0
-  defenderSpeedMin: 0
-  defenderSpeedMax: 0
+  endLine: 46
+  defenderSpeedMin: 12
+  defenderSpeedMax: 17
+  useMovementPrediction: 0
+  MovementPredictionThreshold: 0
+  MovementPredictionTimed: 0
 --- !u!195 &626759121
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2573,7 +2582,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &728855734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2587,9 +2596,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPlayer: {fileID: 446163010}
-  endLine: 0
-  defenderSpeedMin: 0
-  defenderSpeedMax: 0
+  endLine: 46
+  defenderSpeedMin: 12
+  defenderSpeedMax: 17
+  useMovementPrediction: 0
+  MovementPredictionThreshold: 0
+  MovementPredictionTimed: 0
 --- !u!195 &728855735
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3579,7 +3591,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &923691172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3593,9 +3605,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPlayer: {fileID: 446163010}
-  endLine: 0
-  defenderSpeedMin: 0
-  defenderSpeedMax: 0
+  endLine: 46
+  defenderSpeedMin: 12
+  defenderSpeedMax: 17
+  useMovementPrediction: 0
+  MovementPredictionThreshold: 0
+  MovementPredictionTimed: 0
 --- !u!195 &923691173
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3874,7 +3889,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.54491353, y: -0.00000002885483, z: 0.00000001875198, w: 0.8384923}
+  m_LocalRotation: {x: 0.54491353, y: 0.00000002885484, z: -0.000000018751987, w: 0.8384923}
   m_LocalPosition: {x: 0, y: 20.45, z: -54.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3930,6 +3945,7 @@ GameObject:
   - component: {fileID: 998839002}
   - component: {fileID: 998839006}
   - component: {fileID: 998839007}
+  - component: {fileID: 998839008}
   m_Layer: 0
   m_Name: Defender
   m_TagString: Untagged
@@ -4039,9 +4055,9 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 0.1
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 0
+  m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 1
@@ -4054,15 +4070,36 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998839001}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91e7fe5474a18614488c534c7a0a312f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetPlayer: {fileID: 446163010}
-  endLine: 0
-  defenderSpeedMin: 0
-  defenderSpeedMax: 0
+  endLine: 46
+  defenderSpeedMin: 7
+  defenderSpeedMax: 13
+  useMovementPrediction: 0
+  MovementPredictionThreshold: 0
+  MovementPredictionTimed: 0
+--- !u!114 &998839008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998839001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c2da1ce1ea20f4280926b99ebb352b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  player: {fileID: 0}
+  playerCC: {fileID: 0}
+  defenderSpeedMin: 12
+  defenderSpeedMax: 15
+  canIntercept: 1
 --- !u!1 &1002010058
 GameObject:
   m_ObjectHideFlags: 0
@@ -4249,7 +4286,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1101049589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4263,9 +4300,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPlayer: {fileID: 446163010}
-  endLine: 0
-  defenderSpeedMin: 0
-  defenderSpeedMax: 0
+  endLine: 46
+  defenderSpeedMin: 12
+  defenderSpeedMax: 17
+  useMovementPrediction: 0
+  MovementPredictionThreshold: 0
+  MovementPredictionTimed: 0
 --- !u!195 &1101049590
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4988,7 +5028,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1431184921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5002,9 +5042,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPlayer: {fileID: 446163010}
-  endLine: 0
-  defenderSpeedMin: 0
-  defenderSpeedMax: 0
+  endLine: 46
+  defenderSpeedMin: 12
+  defenderSpeedMax: 17
+  useMovementPrediction: 0
+  MovementPredictionThreshold: 0
+  MovementPredictionTimed: 0
 --- !u!195 &1431184922
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5571,7 +5614,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1624845045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5585,9 +5628,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPlayer: {fileID: 446163010}
-  endLine: 0
-  defenderSpeedMin: 0
-  defenderSpeedMax: 0
+  endLine: 46
+  defenderSpeedMin: 12
+  defenderSpeedMax: 17
+  useMovementPrediction: 0
+  MovementPredictionThreshold: 0
+  MovementPredictionTimed: 0
 --- !u!195 &1624845046
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5853,7 +5899,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1632942776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5867,9 +5913,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPlayer: {fileID: 446163010}
-  endLine: 0
-  defenderSpeedMin: 0
-  defenderSpeedMax: 0
+  endLine: 46
+  defenderSpeedMin: 12
+  defenderSpeedMax: 17
+  useMovementPrediction: 0
+  MovementPredictionThreshold: 0
+  MovementPredictionTimed: 0
 --- !u!195 &1632942777
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -6446,7 +6495,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1745334975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6460,9 +6509,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPlayer: {fileID: 446163010}
-  endLine: 0
-  defenderSpeedMin: 0
-  defenderSpeedMax: 0
+  endLine: 46
+  defenderSpeedMin: 12
+  defenderSpeedMax: 17
+  useMovementPrediction: 0
+  MovementPredictionThreshold: 0
+  MovementPredictionTimed: 0
 --- !u!195 &1745334976
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -7584,7 +7636,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2060252138}
-  m_LocalRotation: {x: 0.54491353, y: -0.00000002885483, z: 0.00000001875198, w: 0.8384923}
+  m_LocalRotation: {x: 0.54491353, y: 0.00000002885484, z: -0.000000018751987, w: 0.8384923}
   m_LocalPosition: {x: 0, y: 20.45, z: -54.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8379,6 +8431,8 @@ MonoBehaviour:
   _walkSpeed: 4
   _sprintSpeed: 10
   _turnSmoothing: 0.212
+  historicalPosDuration: 1
+  historicalPosInterval: 0.1
 --- !u!143 &8408070859048059219
 CharacterController:
   m_ObjectHideFlags: 0
