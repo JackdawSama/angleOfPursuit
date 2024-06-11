@@ -4,13 +4,15 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class TestDef : MonoBehaviour
+public class AngleOfPursuitDefender : MonoBehaviour
 {   
     //References
     [SerializeField] NavMeshAgent agent;
     [SerializeField] PlayerMove player;
     [SerializeField] CharacterController playerCC;
 
+    [SerializeField] private int userDefinedDefenderSpeed = 13;
+    [SerializeField] private bool randomSpeed = false;
     [SerializeField] private int defenderSpeedMin = 0;
     [SerializeField] private int defenderSpeedMax = 0;
     [SerializeField] private bool canIntercept = true;
@@ -31,7 +33,15 @@ public class TestDef : MonoBehaviour
             playerCC = player.GetComponent<CharacterController>();
         }
 
-        agent.speed = Random.Range(defenderSpeedMin, defenderSpeedMax);
+        //Sets Defender's Speed based on user's options
+        if(randomSpeed)
+        {
+            agent.speed = Random.Range(defenderSpeedMin, defenderSpeedMax);
+        }
+        else
+        {
+            agent.speed = userDefinedDefenderSpeed;
+        }
     }
 
     void Update()
