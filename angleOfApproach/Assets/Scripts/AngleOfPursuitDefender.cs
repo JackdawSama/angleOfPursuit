@@ -11,10 +11,10 @@ public class AngleOfPursuitDefender : MonoBehaviour
     [SerializeField] PlayerMove player;
     [SerializeField] CharacterController playerCC;
 
-    [SerializeField] private int userDefinedDefenderSpeed = 13;
+    [SerializeField] private float userDefinedDefenderSpeed = 13;
     [SerializeField] private bool randomSpeed = false;
-    [SerializeField] private int defenderSpeedMin = 0;
-    [SerializeField] private int defenderSpeedMax = 0;
+    [SerializeField] private float defenderSpeedMin = 0;
+    [SerializeField] private float defenderSpeedMax = 0;
     [SerializeField] private bool canIntercept = true;
 
     private float timeToIntercept1;
