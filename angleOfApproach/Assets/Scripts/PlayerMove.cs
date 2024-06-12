@@ -6,36 +6,33 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(Animator))]
 public class PlayerMove : MonoBehaviour
-{
+{   
+    //Input & Movement Variables
     private Vector2 _input;
     private Vector3 _direction;
     private CharacterController _controller;
+    private float _speed;
+    [SerializeField] private float _sprintSpeed = 5.0f;
 
+    //Animator Variables
     private Animator _animator;
     float animX = 0;
     float animY = 0;
 
-    private float _currentVelocity;
-
-    private float _speed;
-    [SerializeField] private float _sprintSpeed = 5.0f;
-    [Range(0.0f, 1.0f)]
-    [SerializeField] private float _turnSmoothing;
-
+    //Misc Variables
     private bool inputKill = false;
 
 
     void Awake()
-    {
+    {   
+        //Caching Components and variables
         _controller = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
-        // _speed = _walkSpeed;
         _speed = _sprintSpeed;
     }
 
     void Update()
     {
-        // ApplyRotation();
         Move();
     }
 
@@ -63,30 +60,6 @@ public class PlayerMove : MonoBehaviour
 
     }
 
-
-    // public void Sprint(InputAction.CallbackContext context)
-    // {
-    //     if(context.performed)
-    //     {
-    //         _speed = _sprintSpeed;
-    //     }
-    //     if(context.canceled)
-    //     {
-    //         _speed = _walkSpeed;
-    //     }
-    // }
-
-    void ApplyRotation()
-    {
-        if(_input.sqrMagnitude == 0) return;
-
-        Debug.Log("Working");
-        //Calculations for turning
-        var targetAngle = Mathf.Atan2(_input.x, _input.y) * Mathf.Rad2Deg;
-        var angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _currentVelocity, _turnSmoothing);
-        transform.rotation = Quaternion.Euler(0, angle, 0);
-    }
-
     //Function which calculates player movement
     void Move()
     {
@@ -95,11 +68,13 @@ public class PlayerMove : MonoBehaviour
         _controller.Move(_direction * _speed * Time.deltaTime);
     }
 
+    //Function to kill input
     void KillInput()
     {
         inputKill = true;
     }
 
+    //Subscribing & Unsubscribing to Events
     void OnEnable()
     {
         TriggerSys.touchDown += KillInput;

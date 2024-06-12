@@ -6,27 +6,29 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class AngleOfPursuitDefender : MonoBehaviour
 {   
-    //References
+    //Defender References
     [SerializeField] NavMeshAgent agent;
     [SerializeField] PlayerMove player;
     [SerializeField] CharacterController playerCC;
 
+    //Defender Variables
     [SerializeField] private float userDefinedDefenderSpeed = 13;
     [SerializeField] private bool randomSpeed = false;
     [SerializeField] private float defenderSpeedMin = 0;
     [SerializeField] private float defenderSpeedMax = 0;
     [SerializeField] private bool canIntercept = true;
 
+    //Misc Variables used for calculations
     private float timeToIntercept1;
     private float timeToIntercept2;
     private float timeToIntercept;
-
     private Vector3 pointOfIntersection;
 
     private bool stopChase = false;
 
     void Start()
-    {
+    {   
+        //Cache Components
         agent = GetComponent<NavMeshAgent>();
 
         if(player == null)
@@ -48,11 +50,10 @@ public class AngleOfPursuitDefender : MonoBehaviour
 
     void Update()
     {
-
         if(player != null)
         {
             if(stopChase) return;
-            
+
             CalculateQuadEqn();
             if(canIntercept)
             {
@@ -144,9 +145,9 @@ public class AngleOfPursuitDefender : MonoBehaviour
 
         //Calculating the defender's velocity
         Vector3 defenderVelocity = (pointOfIntersection - transform.position).normalized * agent.speed;
-        agent.velocity = defenderVelocity;
+        agent.velocity = defenderVelocity;          //Sets defender's velocity. Do not remove as it'll cause inaccurate results
         // agent.SetDestination(agent.velocity);
-        agent.SetDestination(pointOfIntersection);
+        agent.SetDestination(pointOfIntersection);  //Sets defender's destination. This line can be commented out and it'll still work but just there
     }
 
     void StopChase()
