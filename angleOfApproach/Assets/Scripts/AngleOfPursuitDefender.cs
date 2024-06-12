@@ -23,6 +23,8 @@ public class AngleOfPursuitDefender : MonoBehaviour
 
     private Vector3 pointOfIntersection;
 
+    private bool stopChase = false;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -46,8 +48,11 @@ public class AngleOfPursuitDefender : MonoBehaviour
 
     void Update()
     {
+
         if(player != null)
         {
+            if(stopChase) return;
+            
             CalculateQuadEqn();
             if(canIntercept)
             {
@@ -142,6 +147,23 @@ public class AngleOfPursuitDefender : MonoBehaviour
         agent.velocity = defenderVelocity;
         // agent.SetDestination(agent.velocity);
         agent.SetDestination(pointOfIntersection);
+    }
+
+    void StopChase()
+    {
+        stopChase = true;
+    }
+
+    void OnEnable()
+    {
+        TriggerSys.touchDown += StopChase;
+        TriggerSys.outOfBounds += StopChase;
+    }
+
+    void OnDisable()
+    {
+        TriggerSys.touchDown -= StopChase;
+        TriggerSys.outOfBounds -= StopChase;
     }
     
 }

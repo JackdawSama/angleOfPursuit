@@ -14,12 +14,6 @@ public class Defender : MonoBehaviour
     [SerializeField] private int defenderSpeedMax = 0;
     private float defenderSpeed = 0.0f;
 
-    [SerializeField] private bool useMovementPrediction;
-    [Range(-1,1)]
-    [SerializeField] private float MovementPredictionThreshold = 0.0f;
-    [Range(0.25f,2.0f)]
-    [SerializeField] private float MovementPredictionTimed = 0.0f;
-
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();

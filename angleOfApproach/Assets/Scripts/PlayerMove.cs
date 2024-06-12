@@ -12,21 +12,17 @@ public class PlayerMove : MonoBehaviour
     private CharacterController _controller;
 
     private Animator _animator;
-    public float animX = 0;
-    public float animY = 0;
+    float animX = 0;
+    float animY = 0;
 
     private float _currentVelocity;
 
     private float _speed;
-    [SerializeField] private float _dashSpeed = 2.0f;
     [SerializeField] private float _sprintSpeed = 5.0f;
     [Range(0.0f, 1.0f)]
     [SerializeField] private float _turnSmoothing;
 
-    private Queue<Vector3> historicalVelocities;
-    private float lastPositionTime;
-    private int maxQueueSize;
-
+    private bool inputKill = false;
 
 
     void Awake()
@@ -67,6 +63,7 @@ public class PlayerMove : MonoBehaviour
 
     }
 
+
     // public void Sprint(InputAction.CallbackContext context)
     // {
     //     if(context.performed)
@@ -93,6 +90,25 @@ public class PlayerMove : MonoBehaviour
     //Function which calculates player movement
     void Move()
     {
+        if(inputKill) return;
+
         _controller.Move(_direction * _speed * Time.deltaTime);
+    }
+
+    void KillInput()
+    {
+        inputKill = true;
+    }
+
+    void OnEnable()
+    {
+        TriggerSys.touchDown += KillInput;
+        TriggerSys.outOfBounds += KillInput;
+    }
+
+    void OnDisable()
+    {
+        TriggerSys.touchDown -= KillInput;
+        TriggerSys.outOfBounds -= KillInput;
     }
 }
